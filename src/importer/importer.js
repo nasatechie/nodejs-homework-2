@@ -12,6 +12,10 @@ export class Importer{
             this.import(this.path+'/'+filename).then(csvData =>{
                 console.log(CsvToJson(csvData));
             });
+
+            //Synchronous
+            let csvData = this.importSync(this.path + '/' + filename);
+            console.log(CsvToJson(csvData));
         });
     }
 
@@ -23,5 +27,10 @@ export class Importer{
                 resolve(data);
             });
         });
+    }
+    //Synchronous
+    importSync(path) {
+        let data = fs.readFileSync(path, { encoding: 'utf-8' });
+        return data;
     }
 }
