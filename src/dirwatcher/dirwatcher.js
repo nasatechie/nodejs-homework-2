@@ -3,8 +3,8 @@ import { EventEmitter } from 'events';
 
 export class DirWatcher extends EventEmitter{
     constructor(){
-        let files = [];
-        let new_files = [];
+        this.files = [];
+        this.new_files = [];
         super();
     }
     watch(path, delay){
